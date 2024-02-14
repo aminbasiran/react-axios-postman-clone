@@ -1,7 +1,7 @@
 import React , {useEffect} from 'react'
 import { useForm } from 'react-hook-form';
 import { useGlobalStore } from '../Context/ContextProvider';
-import axios  from 'axios';
+import axios, {isCancel, AxiosError} from 'axios';
 
 const RequestPanel = ({setLoading}) => {
 
@@ -15,16 +15,14 @@ const RequestPanel = ({setLoading}) => {
 
     const watchedURL = watch("url");
     const watchedMethod = watch("method");
-    const watchedParamsKey = watch("paramsKey");
-    const watchedParamsValue = watch("paramsValue");
 
     useEffect(() => {
         dispatch({type:actionTypes.UPDATE_REQUEST_URL, payload:{url: watchedURL}})
-    }, [watchedURL,watchedParamsKey,watchedParamsValue]);
+    }, [watchedURL,state.requestFormData.params]);
 
     useEffect(() => {
         dispatch({type:actionTypes.UPDATE_REQUEST_METHOD, payload:{method: watchedMethod}})
-    }, [watchedMethod]);
+    }, [watchedMethod,state.requestFormData.params]);
 
 
     const makeRequest = async() => {

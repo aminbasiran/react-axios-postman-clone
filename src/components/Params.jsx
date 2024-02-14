@@ -17,7 +17,6 @@ const Params = ({id}) => {
             type: actionTypes.UPDATE_REQUEST_PARAMS,
             payload: { ["key"]: watchedParamsKey, id: id},
         });
-        
     },[watchedParamsKey])
 
     useEffect(()=>{

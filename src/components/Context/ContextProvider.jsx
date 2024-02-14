@@ -51,7 +51,7 @@ const reducer = (state,action) => {
         return {...state, requestFormData: {...state.requestFormData, url:makeRequestURL}} 
         
       // 
-      
+
       case actionTypes.ADD_REQUEST_PARAMS:
         return {...state, requestFormData: {...state.requestFormData, params: [...state.requestFormData.params, action.payload.newObject]} } 
 
